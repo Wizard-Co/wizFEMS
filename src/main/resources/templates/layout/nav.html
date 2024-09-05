@@ -1,106 +1,109 @@
 <th:block th:fragment="navigation">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <img class="navbar-brand img" src="/img/wizard.png" width="60" height="50">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <nav class="navbar px-navbar">
 
-                <!-- 메뉴 정의 -->
-                <ul th:remove="all">
-                    <li th:fragment="th_navItem(class, link, title, icon)">
-                        <a th:class="${class}" aria-current="page" th:href="@{__${link}__}">
-                            <span th:class="${icon}"></span>
-                            <span th:text="${title}"></span>
-                        </a>
-                    </li>
-                </ul>
-
-                <!--실 메뉴-->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span class="bi bi-folder"></span>
-                            기준정보
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '자사정보 설정', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '시스템 사용이력 조회', 'bi bi-card-list')}"></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li th:replace="~{::th_navItem('dropdown-item', 'BaseCode', '공통코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '시스템 정보 설정', 'bi bi-card-list')}"></li>
-                        </ul>
-                    </li>
-                    <!--공지사항-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span class="bi bi-folder"></span>
-                            에너지모니터링
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li th:replace="~{::th_navItem('dropdown-item', 'NoticeAdd', '공지사항 설정', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', 'Notice', '공지사항 조회', 'bi bi-card-list')}"></li>
-                        </ul>
-                    </li>
-                    <!--기초코드 관리-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span class="bi bi-folder"></span>
-                            서비스관리
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '거래처코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '부서코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '직책코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '직무코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '사원코드 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', 'process-code', '공정 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', 'mc-code', '설비마스터 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '차량 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 사용장치 등록', 'bi bi-card-list')}"></li>
-                        </ul>
-                    </li>
-                    <!--에너지 생산/사용 등록-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span class="bi bi-folder"></span>
-                            설비관리
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 생산등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '차량별 에너지 사용 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '설비별 에너지 사용 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 환산계수 관리', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '공정별 생산실적 등록', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 사용량 수집 조회', 'bi bi-card-list')}"></li>
-                        </ul>
-                    </li>
-                    <!--에너지 사용 분석-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            <span class="bi bi-folder"></span>
-                            시스템관리
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '통합 에너지사용 분석', 'bi bi-card-list')}"></li>
-                            <li th:replace="~{::th_navItem('dropdown-item', '#', '통합 에너지사용 조회', 'bi bi-card-list')}"></li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
     </nav>
+<!--    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">-->
+<!--        <div class="container-fluid">-->
+<!--            <img class="navbar-brand img" src="/img/wizard.png" width="60" height="50">-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"-->
+<!--                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
+<!--                    aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+
+<!--                &lt;!&ndash; 메뉴 정의 &ndash;&gt;-->
+<!--                <ul th:remove="all">-->
+<!--                    <li th:fragment="th_navItem(class, link, title, icon)">-->
+<!--                        <a th:class="${class}" aria-current="page" th:href="@{__${link}__}">-->
+<!--                            <span th:class="${icon}"></span>-->
+<!--                            <span th:text="${title}"></span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--                &lt;!&ndash;실 메뉴&ndash;&gt;-->
+<!--                <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--                           aria-expanded="false">-->
+<!--                            <span class="bi bi-folder"></span>-->
+<!--                            기준정보-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '자사정보 설정', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '시스템 사용이력 조회', 'bi bi-card-list')}"></li>-->
+<!--                            <li>-->
+<!--                                <hr class="dropdown-divider">-->
+<!--                            </li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', 'BaseCode', '공통코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '시스템 정보 설정', 'bi bi-card-list')}"></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;공지사항&ndash;&gt;-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--                           aria-expanded="false">-->
+<!--                            <span class="bi bi-folder"></span>-->
+<!--                            에너지모니터링-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', 'NoticeAdd', '공지사항 설정', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', 'Notice', '공지사항 조회', 'bi bi-card-list')}"></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;기초코드 관리&ndash;&gt;-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--                           aria-expanded="false">-->
+<!--                            <span class="bi bi-folder"></span>-->
+<!--                            서비스관리-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '거래처코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '부서코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '직책코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '직무코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '사원코드 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', 'process-code', '공정 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', 'mc-code', '설비마스터 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '차량 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 사용장치 등록', 'bi bi-card-list')}"></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;에너지 생산/사용 등록&ndash;&gt;-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--                           aria-expanded="false">-->
+<!--                            <span class="bi bi-folder"></span>-->
+<!--                            설비관리-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 생산등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '차량별 에너지 사용 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '설비별 에너지 사용 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 환산계수 관리', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '공정별 생산실적 등록', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '에너지 사용량 수집 조회', 'bi bi-card-list')}"></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    &lt;!&ndash;에너지 사용 분석&ndash;&gt;-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"-->
+<!--                           aria-expanded="false">-->
+<!--                            <span class="bi bi-folder"></span>-->
+<!--                            시스템관리-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '통합 에너지사용 분석', 'bi bi-card-list')}"></li>-->
+<!--                            <li th:replace="~{::th_navItem('dropdown-item', '#', '통합 에너지사용 조회', 'bi bi-card-list')}"></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
     <script>
         document.querySelectorAll('.nav-item.dropdown .bi-folder').forEach(span => {
             span.closest('.nav-item.dropdown').addEventListener('click', () => {
