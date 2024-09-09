@@ -2,7 +2,8 @@
 #### 분배 
 
 
-![image](https://github.com/user-attachments/assets/e518ebad-ad62-4ed4-abd7-52053d327ab6)
+![image](https://github.com/user-attachments/assets/3b9b3764-06a0-415c-b9ee-267e0993ba13)
+
 -----
 
 #### DB 
