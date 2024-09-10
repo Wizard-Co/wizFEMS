@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import wizard.fems.basicMgmt.machine.DTO.MCDTO;
-import wizard.fems.common.Date;
+import wizard.fems.common.util.Date;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

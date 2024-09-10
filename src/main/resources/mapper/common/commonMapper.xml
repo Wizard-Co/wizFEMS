@@ -3,12 +3,23 @@
 
 <mapper namespace="wizard.fems.common.commonMapper">
 
-    <select id="getCmCode" resultType="wizard.fems.common.DTO.CMCode" parameterType="String">
+    <select id="getCmCode" resultType="wizard.fems.common.dto.CMCode" parameterType="String">
         select codeID
              , codeName
         from cm_Code
         where groupCode = #{groupCode}
     </select>
+
+    <select id="getUser" resultType="wizard.fems.common.dto.User" parameterType="String">
+        select id
+             , name
+             , password
+             , authTypeID
+             , authType = 'ADMIN'
+        from mt_user
+        where id = #{id}
+    </select>
+
 
 
 </mapper>

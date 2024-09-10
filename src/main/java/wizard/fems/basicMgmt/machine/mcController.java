@@ -5,11 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import wizard.fems.basicMgmt.machine.DTO.MCDTO;
-import wizard.fems.common.DTO.CMCode;
-import wizard.fems.common.Date;
+import wizard.fems.common.dto.CMCode;
 import wizard.fems.common.commonService;
-import wizard.fems.common.file.FTP;
-import wizard.fems.common.file.FileService;
 
 import java.util.List;
 import java.util.Map;
@@ -35,7 +32,7 @@ public class mcController {
 
     @GetMapping("/basicMgmt/machine")
     public String mc(Model model) {
-        return "/pages/basicMgmt/machine";
+        return "/pages/basicMgmt/machine/machine";
     }
 
     @PostMapping(value = "/basicMgmt/machine/search")
@@ -51,7 +48,7 @@ public class mcController {
 
         MCDTO mcdto = mcService.getMachineDetail(mcID);
         model.addAttribute("mcdto", mcdto);
-        return "/pages/basicMgmt/machineDetail";
+        return "/pages/basicMgmt/machine/machineDetail";
     }
 
     @PostMapping("/basicMgmt/machine/add")

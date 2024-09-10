@@ -1,6 +1,7 @@
-package wizard.fems.common.file;
+package wizard.fems.common.util;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@Service
+@Component
 public class FileService {
     public void uploadFile(MultipartFile multipartFile, String fileName, String folderPath) throws IOException {
 

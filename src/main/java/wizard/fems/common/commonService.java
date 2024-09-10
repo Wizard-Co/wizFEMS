@@ -2,11 +2,9 @@ package wizard.fems.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wizard.fems.common.DTO.CMCode;
+import wizard.fems.common.dto.CMCode;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class commonService {

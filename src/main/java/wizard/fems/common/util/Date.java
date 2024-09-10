@@ -1,4 +1,4 @@
-package wizard.fems.common;
+package wizard.fems.common.util;
 
 import org.springframework.stereotype.Component;
 

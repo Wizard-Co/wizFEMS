@@ -21,7 +21,8 @@ public class mainController {
 
     @GetMapping("/")
     public String main(Model model){
-        model.addAttribute("mcdto", new MCDTO());
-        return "pages/basicMgmt/machine";
+        return "pages/main";
     }
+
+
 }

@@ -1,5 +1,6 @@
-package wizard.fems.common.DTO;
+package wizard.fems.common.enums;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -13,16 +14,12 @@ import lombok.Getter;
  * 2024-08-30         sooJeong             최초 생성
  */
 @Getter
+@AllArgsConstructor
 public enum UseYN {
     Y("", true),
     N("*", false);
 
     private String strValue;
     private boolean boolValue;
-
-    private UseYN(String strValue, boolean boolValue){
-        this.strValue = strValue;
-        this.boolValue = boolValue;
-    }
 
 }
