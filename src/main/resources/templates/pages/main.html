@@ -1,1 +1,33 @@
-메인
+<!--
+  *packageName      : templates.pages.basicMgmt
+  *fileName         : machine
+  *author           : sooJeong
+  *date             : 2024-08-28
+  *======================================================
+  *DATE             AUTHOR               NOTE
+  *------------------------------------------------------
+  * 2024-09-10         sooJeong             최초 생성
+ -->
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" lang="ko">
+
+<th:block layout:fragment="css">
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/basicMgmt/machine/machine.css}"/>-->
+</th:block>
+<th:block layout:fragment="script">
+<!--    <script th:src="@{/basicMgmt/machine/machine.js}"></script>-->
+</th:block>
+<!--content-->
+<section layout:fragment="content">
+    <body>
+    <loading-form id="loading" class="invisible"></loading-form>
+    <div id="contents">
+
+    </div>
+    </body>
+
+</section>
+</html>
+

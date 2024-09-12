@@ -40,7 +40,7 @@ public class FemsAccessDeniedHandler implements AccessDeniedHandler {
         response.setStatus(HttpStatus.FORBIDDEN.value());
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(objectMapper.writeValueAsString(
-                Map.of("error", "AccessDenied")
+                Map.of("error", accessDeniedException.getMessage())
                                                                   ));
 
     }

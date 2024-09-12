@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import wizard.fems.basicMgmt.machine.DTO.MCDTO;
 import wizard.fems.common.dto.CMCode;
 import wizard.fems.common.commonService;
+import wizard.fems.common.dto.User;
+import wizard.fems.common.security.domain.LoginUser;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +33,8 @@ public class mcController {
     }
 
     @GetMapping("/basicMgmt/machine")
-    public String mc(Model model) {
+    public String mc(@LoginUser User user) {
+
         return "/pages/basicMgmt/machine/machine";
     }
 

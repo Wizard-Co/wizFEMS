@@ -35,10 +35,10 @@ public class SecurityConfig {
                         -> csrf.disable()
                  )
                 .authorizeHttpRequests((authorizeRequest) -> authorizeRequest
-//                                .requestMatchers("/login").permitAll()
-//                                .requestMatchers("/error").permitAll()
-//                                .requestMatchers("/img/**", "/common/**", "/lib/**").permitAll()
-//                                .requestMatchers("/syetemMgmt/**").hasAuthority(Role.ADMIN.name())
+                                .requestMatchers("/login").permitAll()
+                                .requestMatchers("/error").permitAll()
+                                .requestMatchers("/syetemMgmt/**").hasAuthority(Role.ADMIN.name())
+                                .requestMatchers("/basicMgmt/**").hasAuthority(Role.ADMIN.name())
                                 .anyRequest().authenticated()
                                       )
                 .formLogin((formLogin) -> formLogin

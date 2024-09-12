@@ -8,14 +8,23 @@ body {
     color: #555555;
 }
 
+a {
+    text-decoration: none;
+}
+
+body:before, body:after {
+    content: " ";
+    display: table; }
+
+body:after {
+    clear: both; }
+
 button {
     border: none;
     outline: none;
     box-shadow: none;
     color: inherit;
 }
-
-
 
 #userInfo {
     width: 10%;
@@ -247,7 +256,10 @@ select.form-control {
 }
 
 .dropdown-menu {
-    font-weight: bold;
+    padding: 5px 0;
+    border-width: 2px;
+    box-shadow: none;
+
 }
 
 .dropdown-menu,
@@ -288,3 +300,105 @@ select.form-control {
         font-size: 13px;
     }
 }
+
+
+
+/*두루*/
+
+     .m-r-2 {
+         margin-right: 15px !important; }
+
+.m-l-2 {
+    margin-left: 15px !important; }
+
+.m-r-05 {
+    margin-right: 5px;
+}
+
+.m-r-4 {
+    margin-right: 30px !important; }
+
+.navbar-brand {
+    height: 46px;
+    padding: 0;
+    line-height: 46px; }
+
+
+.page-header:before, .page-header:after {
+    content: " ";
+    display: table; }
+
+.page-header:after {
+    clear: both; }
+
+.btn-info {
+    color: #fff;
+    border-color: #59b0cb;
+    background: #59c4e4; }
+
+
+@media (min-width: 768px) {
+    .btn,
+    button,
+    a {
+        outline: none !important; }
+    ::-moz-focus-inner {
+        border: 0 !important; }
+    select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #444; } }
+
+.btn-success {
+    color: #fff;
+    border-color: #6ea958;
+    background: #78bd5d; }
+
+.btn-print {
+    color: #444;
+    border-color: #dfdfdf;
+    background: #ececec; }
+
+.panel {
+    display: block;
+    border: 1px solid #e2e2e2;
+    box-shadow: none;
+    margin-bottom: 20px; }
+.panel > hr {
+    margin: 0; }
+
+label,
+optgroup {
+    font-weight: 600; }
+
+select.form-control {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 29px; }
+
+select.form-control {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 29px; }
+
+.form-control {
+    box-shadow: none !important; }
+
+.page-header h1,
+.page-header h2,
+.page-header h3,
+.page-header h4,
+.page-header h5,
+.page-header h6 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px; }
+
+h1, h2, h3, h4, h5, h6 {
+    outline: none;
+     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
+    font-weight: 300; }

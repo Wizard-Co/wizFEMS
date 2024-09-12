@@ -39,7 +39,7 @@ public class FemsAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다");
         }
 
-        return new UsernamePasswordAuthenticationToken(userID, userPW, userDetail.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetail, userPW, userDetail.getAuthorities());
     }
 
     @Override
@@ -47,3 +47,4 @@ public class FemsAuthenticationProvider implements AuthenticationProvider {
         return true;
     }
 }
+
