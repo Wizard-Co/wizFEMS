@@ -1,0 +1,66 @@
+<!--
+  *packageName      :
+  *fileName         : login html
+  *author           : sooJeong
+  *date             : 2024-09-12
+  *======================================================
+  *DATE             AUTHOR               NOTE
+  *------------------------------------------------------
+  *2024-09-12       sooJeong             최초 생성
+-->
+
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/common/login/login.css">
+</head>
+<body>
+<div class="login">
+    <img src="/common/login/energy-bg.jpg" alt="image" class="login__bg">
+
+    <form th:action="@{/login}" method="post" class="login__form">
+        <h1 class="login__title">FEMS Login</h1>
+
+        <div class="login__inputs">
+            <div class="login__box">
+                <input type="text" name="id" placeholder="ID" required class="login__input">
+                <i class="ri-mail-fill"></i>
+            </div>
+
+            <div class="login__box">
+                <input type="password" name="password" placeholder="Password" required class="login__input">
+                <i class="ri-lock-2-fill"></i>
+            </div>
+        </div>
+
+        <div class="login__check">
+            <div class="login__check-box">
+                <input type="checkbox" class="login__check-input" id="user-check">
+                <label for="user-check" class="login__check-label">아이디 저장</label>
+            </div>
+
+<!--            <a href="#" class="login__forgot">Forgot Password?</a>-->
+        </div>
+
+        <button type="submit" class="login__button">Login</button>
+
+        <div th:if="${param.error}">
+            Invalid username and password.</div>
+        <div th:if="${param.logout}">
+            You have been logged out.</div>
+
+<!--        <div class="login__register">-->
+<!--            Don't have an account? <a href="#">Register</a>-->
+<!--        </div>-->
+    </form>
+</div>
+
+</body>
+</html>
+

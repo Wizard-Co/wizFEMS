@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/basicMgmt/machine")
 public class mcController {
     @Autowired
     private mcService mcService;
@@ -32,20 +33,20 @@ public class mcController {
         System.out.println(cboMcType);
     }
 
-    @GetMapping("/basicMgmt/machine")
+    @GetMapping("")
     public String mc(@LoginUser User user) {
 
         return "/pages/basicMgmt/machine/machine";
     }
 
-    @PostMapping(value = "/basicMgmt/machine/search")
+    @PostMapping(value = "/search")
     @ResponseBody
     public List<MCDTO> getMcData(@RequestBody Map<String, Object> param) {
         List<MCDTO> data = mcService.getMachineList(param);
         return data;
     }
 
-    @PostMapping("/basicMgmt/machine/detail")
+    @PostMapping("/detail")
     public String searchDetail(@RequestParam(name = "mcID", required = true) String mcID,
                                Model model) {
 
@@ -54,19 +55,19 @@ public class mcController {
         return "/pages/basicMgmt/machine/machineDetail";
     }
 
-    @PostMapping("/basicMgmt/machine/add")
+    @PostMapping("/add")
     public String add() {
         return "/pages/basicMgmt/machineDetail";
     }
 
-    @PostMapping("/basicMgmt/machine/save")
+    @PostMapping("/save")
     @ResponseBody
     public void save(@ModelAttribute MCDTO mcdto) {
         mcdto.setCreateUserID("sooJeong");
         mcService.saveMachineDetail(mcdto);
     }
 
-    @PostMapping("/basicMgmt/machine/update")
+    @PostMapping("/update")
     @ResponseBody
     public void update(@ModelAttribute MCDTO mcdto) {
 
@@ -74,7 +75,7 @@ public class mcController {
         mcService.updateMachineDetail(mcdto);
     }
 
-    @GetMapping("/basicMgmt/machine/delete")
+    @GetMapping("/delete")
     @ResponseBody
     public void delete(@RequestParam(name = "mcID") String mcID) {
         mcService.deleteMachine(mcID);

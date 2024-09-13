@@ -1,11 +1,21 @@
 html,
 body {
     height: 100vh;
-    width: 100vw;
+    /*width: 100vw;*/
     font-family: 'FontAwesome';
     font-weight: 400;
     font-size: 14px;
     color: #555555;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #555555;
+    -webkit-box-shadow: transparent;
+    box-shadow: transparent;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 a {
@@ -28,10 +38,6 @@ button {
     color: inherit;
 }
 
-#userInfo {
-    width: 10%;
-    background-color: #0d6efd;
-}
 
 /*본문 넓이*/
 #contents {
@@ -163,14 +169,6 @@ button {
     margin-right: 30px !important;
 }
 
-
-.btn-info {
-    color: #fff;
-    border-color: #59b0cb;
-    background: #59c4e4;
-}
-
-
 @media (min-width: 768px) {
     .btn,
     button,
@@ -179,16 +177,43 @@ button {
     }
 }
 
+@keyframes jelly {
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+    75% {
+        transform: scale(0.95, 1.05);
+    }
+}
+
+.btn:hover {
+    animation: jelly 0.5s;
+}
+
+.btn {
+    width: 70px;
+    border-radius: 30px;
+}
+
+.btn-info {
+    color: #fff;
+    background: #59c4e4;
+    border-color: #59c4e4;
+}
+
 .btn-success {
     color: #fff;
-    border-color: #6ea958;
     background: #78bd5d;
+    border-color: #78bd5d;
 }
 
 .btn-print {
     color: #444;
-    border-color: #dfdfdf;
     background: #ececec;
+    border-color: #ececec;
 }
 
 .panel {
@@ -243,3 +268,4 @@ h1.light, h2.light, h3.light, h4.light, h5.light, h6.light {
 
 .display-inline-block {
     display: inline-block !important; }
+

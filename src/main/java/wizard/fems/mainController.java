@@ -24,5 +24,9 @@ public class mainController {
         return "pages/main";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "/pages/common/login";
+    }
 
 }
