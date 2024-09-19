@@ -4,10 +4,8 @@ window.addEventListener('load', function () {
 
 let selectedRow;
 
-const MCtable = $('#MCtable').DataTable({
-    select: true,
-    dom: '<"d-none"B><"mb-2 right"f>t<"mt-2 center"p>',
-    buttons: [{
+const MCtable = new DataTable('#MCtable', {
+        buttons: [{
         extend: 'excel',
         filename: '설비관리',
         title: '설비관리',
@@ -16,19 +14,6 @@ const MCtable = $('#MCtable').DataTable({
             $('row:first c', sheet).attr('s', '42');
         }
     }],
-    language: {
-        lengthMenu: "페이지당 _MENU_ 개의 목록 표시",
-        search: "통합 검색:",
-        zeroRecords: "검색된 항목이 없습니다.",
-        info: "_PAGES_ / _PAGE_ 페이지",
-        infoEmpty: "검색된 항목이 없습니다.",
-        infoFiltered: "(전체 _MAX_개의 항목에서 검색)",
-        paginate: {
-            previous: "<<",
-            next: ">>"
-        }
-    },
-    scrollY: true,
     columns: [
         {data: "mcType", className: 'center'},
         {data: "mcName", className: 'left'},
@@ -37,23 +22,24 @@ const MCtable = $('#MCtable').DataTable({
         {data: "elecCapacity", className: 'right'},
         {data: "steamCapacity", className: 'right'},
     ]
-});
+})
+
+let tbody = document.querySelector('#MCtable tbody');
+tbody.onclick = function () {
+    let rowElement = event.target.closest('tr');
+    selectedRow = MCtable.row(rowElement).data();
+};
+tbody.ondblclick = function (event) {
+    let param = {
+        mcID: selectedRow.mcID
+    }
+    openForm('machineDetail', '/basicMgmt/machine/detail?mode=update', param, '');
+}
 
 function mainBtnSetting() {
     document.querySelector("#btnSearch").addEventListener("click", Search);
 }
 
-$('#MCtable tbody').on('dblclick', 'tr', function () {
-    selectedRow = MCtable.row(this).data();
-    let param = {
-        mcID: selectedRow.mcID
-    }
-    openForm('machineDetail', '/basicMgmt/machine/detail?mode=update', param, '');
-});
-
-$('#MCtable tbody').on('click', 'tr', function () {
-    selectedRow = MCtable.row(this).data();
-})
 document.getElementById('btnAdd').addEventListener('click', function () {
     openForm('machineDetail', '/basicMgmt/machine/add?mode=add', '', '');
 })
