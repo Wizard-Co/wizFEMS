@@ -43,9 +43,34 @@
             <div class="panel-body">
                 <div class="flx">
                     <div class="div-srh m-r-4">
-                        <label for="inputCustomNameSrh" class="lbl-srh">업체명</label>
-                        <input type="text" id="inputCustomNameSrh" class="form-control" placeholder="업체명 검색"
-                               onkeyup="if(window.event.keyCode==13){Search()}">
+                        <label class="lbl-srh">업체명</label>
+                        <select class="form-control w200px display-inline-block ct" name="customID">
+                            <option th:each="option : ${cboCustom}"
+                                    th:value="${option.customID}" th:text="${option.kCustom}">
+                        </select>
+                    </div>
+                    <div class="space"></div>
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">설비</label>
+                        <select class="form-control w200px display-inline-block ct"  name="mcID">
+                            <option th:each="option : ${cboMachine}"
+                                    th:value="${option.mcID}" th:text="${option.mcName}">
+                        </select>
+                    </div>
+                    <div class="space"></div>
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">기간</label>
+                        <input type="date" id="sDate">
+                        <span>&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                        <input type="date" id="eDate">
+                    </div>
+                    <div class="space"></div>
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">알람종류</label>
+                        <select class="form-control w200px display-inline-block ct"  name="codeID">
+                            <option th:each="option : ${cboAlarmType}"
+                                    th:value="${option.codeID}" th:text="${option.codeName}">
+                        </select>
                     </div>
                 </div>
             </div>
@@ -54,14 +79,13 @@
             <table id="customTable" class="striped cell-border table-light-info" style="width:100%">
                 <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>대리점</th>
                     <th>업체명</th>
-                    <th>사업자등록번호</th>
-                    <th>주소</th>
-                    <th>대표자</th>
-                    <th>연락처</th>
-                    <th>사용여부</th>
+                    <th>발생일</th>
+                    <th>발생일시</th>
+                    <th>알람종류</th>
+                    <th>유형</th>
+                    <th>설비</th>
+                    <th>비고</th>
                 </tr>
                 </thead>
             </table>
