@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wizard.fems.common.CMMapper">
+
+    <select id="getCmCode" resultType="wizard.fems.common.dto.CMCode" parameterType="String">
+        select codeID
+             , codeName
+        from cm_Code
+        where groupCode = #{groupCode}
+    </select>
+
+    <select id="getPlusFinder" statementType="CALLABLE" resultType="hashmap" parameterType="hashmap">
+        { call xp_Common_PlusFinder(#{nLarge, javaType=int,jdbcType=INTEGER, mode=IN}
+            , #{sMiddle, javaType=String, jdbcType=VARCHAR, mode=IN})}
+    </select>
+
+</mapper>

@@ -1,0 +1,75 @@
+<!--
+  *packageName      : templates.pages.systemMgmt
+  *fileName         : user
+  *author           : sooJeong
+  *date             : 2024-09-13
+  *======================================================
+  *DATE             AUTHOR               NOTE
+  *------------------------------------------------------
+  * 2024-09-13         sooJeong             최초 생성
+ -->
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" lang="ko">
+
+<th:block layout:fragment="script">
+    <script th:src="@{/systemMgmt/user/user.js}"></script>
+</th:block>
+<!--content-->
+<section layout:fragment="content">
+    <body>
+    <loading-form id="loading" class="invisible"></loading-form>
+    <main>
+        <div class="menu">
+            <div class="page-header">
+                ■ 사용자 관리
+            </div>
+            <div class="icon">
+                <div class="flx">
+                    <button type="button" class="btn btn-info m-r-05" id="btnSearch">조회</button>
+                    <button type="button" class="btn btn-success m-r-05" id="btnAdd">등록</button>
+                    <button type="button" class="btn btn-success" id="btnDelete">삭제</button>
+                </div>
+            </div>
+        </div>
+        <condition class="panel">
+            <div class="panel-body">
+                <div class="flx">
+                    <div class="div-srh m-r-4">
+                        <label for="cboUserType" class="lbl-srh">사용자유형</label>
+                        <select id="cboUserType" class="form-control w150px">
+                            <option value="">전체</option>
+                            <option th:each="option : ${cboUserType}"
+                                    th:value="${option.getAuthTypeID()}" th:text="${option.getAuthType()}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="div-srh m-r-4">
+                        <label for="inputNameSrh" class="lbl-srh">사용자 ID</label>
+                        <input type="text" id="inputNameSrh" class="form-control" placeholder="아이디">
+                    </div>
+
+                </div>
+            </div>
+        </condition>
+        <section>
+            <table id="userTable" class="striped cell-border table-light-info" style="width:100%">
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>아이디</th>
+                    <th>사용자명</th>
+                    <th>사용자유형</th>
+                    <th>사용여부</th>
+                    <th>등록일시</th>
+                </tr>
+                </thead>
+            </table>
+        </section>
+    </main>
+    </body>
+
+</section>
+</html>
+

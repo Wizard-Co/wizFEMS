@@ -1,0 +1,156 @@
+<!--
+  *packageName      : templates.pages.systemMgmt
+  *fileName         : userDetail.html
+  *author           : 김수정
+  *date             : 2024-09-19
+  *======================================================
+  *DATE             AUTHOR               NOTE
+  *------------------------------------------------------
+  * 2024-09-19         김수정             최초 생성
+ -->
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/subLayout}" lang="ko">
+
+<th:block layout:fragment="script">
+    <script th:src="@{/systemMgmt/user/userDetail.js}"></script>
+</th:block>
+<!--content-->
+<section layout:fragment="content">
+    <body>
+    <div id="addPop">
+        <div class="menu">
+            <div class="page-header">
+                <h3>기준정보
+                    <span> /설비관리</span>
+                </h3>
+            </div>
+            <div class="icon">
+                <button type="submit" id="btnUpdate" form="addForm" class="btn btn-success" >수정</button>
+                <button type="submit" id="btnSave" form="addForm" class="btn btn-success" >저장</button>
+                <button type="button" id="btnDelete" class="btn btn-success" >삭제</button>
+                <button type="button" id="btnClose" class="btn btn-print">닫기
+                </button>
+            </div>
+        </div>
+        <div id="main">
+            <span class="form-notice float-end"><b>*</b> 표시는 필수 기입 사항 입니다</span>
+            <form id="addForm" th:object="${user}" class="needs-validation" novalidate>
+                <table id="formTable" class="table table-bordered text-center">
+                    <tbody>
+                    <input type="hidden" th:field="*{personID}">
+                    <tr>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>아이디</label>
+                        </td>
+                        <td class="left">
+                            <input type="text" class="form-control input-necessary"
+                                   th:field="*{userID}"
+                                   placeholder="아이디를 입력하세요" required>
+                            <div class="invalid-feedback">
+                                설비명을 입력해주세요.
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>이름</label>
+                        </td>
+                        <td class="left">
+                            <input type="text" class="form-control input-necessary"
+                                   th:field="*{name}"
+                                   placeholder="이름을 입력하세요" required>
+                            <div class="invalid-feedback">
+                                이름을 입력해주세요.
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>비밀번호</label>
+                        </td>
+                        <td class="left">
+                            <input type="password" class="form-control input-necessary"
+                                   th:field="*{password}"
+                                   placeholder="비밀번호를 입력하세요" required>
+                            <div class="invalid-feedback">
+                                비밀번호를 입력해주세요.
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>비밀번호 확인</label>
+                        </td>
+                        <td class="left">
+                            <input type="password" class="form-control input-necessary" id="chkPassword"
+                                   placeholder="비밀번호 확인" required>
+                            <div class="invalid-feedback">
+                                비밀번호 확인을 입력해주세요.
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>사용자 유형</label>
+                        </td>
+                        <td class="left">
+                            <select class="form-control display-inline-block input-necessary" th:field="*{authTypeID}">
+                                <option th:each="option : ${cboUserType}"
+                                        th:value="${option.getAuthTypeID()}" th:text="${option.getAuthType()}">
+                                </option>
+                            </select>
+                        </td>
+                        <td class="col-md-2">
+                            <label><span class="form-notice"></span>부서</label>
+                        </td>
+                        <td class="left">
+                            <select class="form-control display-inline-block" th:field="*{authTypeID}">
+                                <option th:each="option : ${cboUserType}"
+                                        th:value="${option.getAuthTypeID()}" th:text="${option.getAuthType()}">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-2">
+                            <label><span class="form-notice"></span>전화번호</label>
+                        </td>
+                        <td class="left">
+                            <input type="text" class="form-control"
+                                   th:field="*{phoneNumber}"
+                                   placeholder="전화번호를 입력하세요">
+                        </td>
+                        <td class="col-md-2">
+                            <label><span class="form-notice"></span>휴대폰번호</label>
+                        </td>
+                        <td class="left">
+                            <input type="text" class="form-control"
+                                   th:field="*{cellPhoneNumber}"
+                                   placeholder="휴대폰번호를 입력하세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-2">
+                            <label><span class="form-notice"></span>이메일</label>
+                        </td>
+                        <td class="left">
+                            <input type="email" class="form-control"
+                                   th:field="*{email}"
+                                   placeholder="이메일을 입력하세요">
+                        </td>
+                        <td class="col-md-2">
+                            <label><span class="form-notice">*</span>사용여부</label>
+                        </td>
+                        <td class="left">
+                            <input type="checkbox" class="form-check-input" th:checked="truez"
+                                   th:field="*{useYN}" value="true">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <span class="form-result float-start"></span>
+        </div>
+
+    </div>
+    </body>
+</section>
+</html>

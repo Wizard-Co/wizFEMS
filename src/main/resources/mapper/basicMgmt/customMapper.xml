@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wizard.fems.basicMgmt.custom.customMapper">
+
+    <select id="getCustomList" statementType="CALLABLE" resultType="wizard.fems.basicMgmt.custom.DTO.customDTO"
+            parameterType="map">
+        { call getCustomList(#{kCustom, javaType=String, jdbcType=VARCHAR, mode=IN}
+           )}
+    </select>
+
+    <select id="getCustomDetail" statementType="CALLABLE" resultType="wizard.fems.basicMgmt.custom.DTO.customDTO"
+            parameterType="map">
+        { call getCustomDetail(#{customID, javaType=String, jdbcType=CHAR, mode=IN}
+               )}
+    </select>
+
+    <select id="getAgentName" resultType="wizard.fems.basicMgmt.custom.DTO.customDTO">
+        select agentCustomID = customID
+             , agentCustom = kCustom
+        from mt_custom
+        where businessTypeCode = '01'
+    </select>
+
+    <select id="saveCustomDetail" statementType="CALLABLE" resultType="wizard.fems.basicMgmt.custom.DTO.customDTO"
+            parameterType="wizard.fems.basicMgmt.custom.DTO.customDTO">
+        { call saveCustomDetail(#{kCustom, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                #{businessTypeCode, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                #{agentCustomID, javaType=String, jdbcType=CHAR, mode=IN},
+                                 #{customNo, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{zipCode, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{address1, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{address2, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{contacts, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{chief, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{chargeName, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{chargePhoneNumber, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{chargeEmail, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{useYN, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{comments, javaType=String, jdbcType=VARCHAR, mode=IN},
+                                 #{elecLTypeID, javaType=String, jdbcType=CHAR, mode=IN},
+                                 #{elecsTypeID, javaType=String, jdbcType=CHAR, mode=IN},
+                                 #{createUserID, javaType=String, jdbcType=VARCHAR, mode=IN}
+
+               )}
+    </select>
+
+    <select id="updateCustomDetail" statementType="CALLABLE" resultType="wizard.fems.basicMgmt.custom.DTO.customDTO"
+            parameterType="wizard.fems.basicMgmt.custom.DTO.customDTO">
+        { call updateCustomDetail(#{customID, javaType=String, jdbcType=CHAR, mode=IN},
+                               #{businessTypeCode, javaType=String, jdbcType=CHAR, mode=IN},
+                               #{agentCustomID, javaType=String, jdbcType=CHAR, mode=IN},
+                               #{kCustom, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{customNo, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{zipCode, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{address1, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{address2, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{contacts, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{chief, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{chargeName, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{chargePhoneNumber, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{chargeEmail, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{useYN, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{comments, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{elecLTypeID, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{elecsTypeID, javaType=String, jdbcType=VARCHAR, mode=IN},
+                               #{lastUpdateUserID, javaType=String, jdbcType=VARCHAR, mode=IN}
+
+               )}
+    </select>
+
+
+    <select id="deleteCustomID" statementType="CALLABLE" parameterType="String">
+        { call deleteCustomID(#{customID, javaType=String, jdbcType=CHAR, mode=IN}
+
+        )}
+    </select>
+
+</mapper>
