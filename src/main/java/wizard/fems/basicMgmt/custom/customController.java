@@ -17,7 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import wizard.fems.basicMgmt.custom.DTO.customDTO;
-import wizard.fems.common.commonService;
+import wizard.fems.common.CMService;
 import wizard.fems.common.security.domain.LoginUser;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class customController {
     @Autowired
     private customService customService;
     @Autowired
-    private commonService cmService;
+    private CMService cmService;
 
     @ModelAttribute
     public void getCboCustom(Model model) {
@@ -45,7 +45,7 @@ public class customController {
     }
 
     @GetMapping("/basicMgmt/custom")
-    public String custom(@LoginUser wizard.fems.common.dto.User user) {
+    public String custom() {
 
         return "/pages/basicMgmt/custom/custom";
     }
