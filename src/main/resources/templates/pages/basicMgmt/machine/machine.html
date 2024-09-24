@@ -13,9 +13,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}" lang="ko">
 
-<th:block layout:fragment="css">
-    <link rel="stylesheet" type="text/css" th:href="@{/basicMgmt/machine/machine.css}"/>
-</th:block>
 <th:block layout:fragment="script">
     <script th:src="@{/basicMgmt/machine/machine.js}"></script>
 </th:block>
@@ -23,7 +20,7 @@
 <section layout:fragment="content">
     <body>
     <loading-form id="loading" class="invisible"></loading-form>
-    <div id="contents">
+    <main>
         <div class="menu">
             <div class="page-header">
                 ■ 설비 현황 등록
@@ -40,9 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class="panel">
+        <condition class="panel">
             <div class="panel-body">
-
                 <div class="flx">
                     <div class="div-srh m-r-4">
                         <label for="cboMcTypeSrh" class="lbl-srh">설비유형</label>
@@ -63,11 +59,10 @@
                         <input type="text" id="inputMcNOSrh" class="form-control" placeholder="관리번호 검색"
                                onkeyup="if(window.event.keyCode==13){PlusFinder(event,12,'')}">
                     </div>
-
                 </div>
             </div>
-        </div>
-        <div id="main">
+        </condition>
+        <section>
             <table id="MCtable" class="striped cell-border table-light-info" style="width:100%">
                 <thead>
                 <tr>
@@ -80,8 +75,8 @@
                 </tr>
                 </thead>
             </table>
-        </div>
-    </div>
+        </section>
+    </main>
     </body>
 
 </section>

@@ -20,9 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class mcService {
+@Transactional
+public class MCService {
     @Autowired
-    private mcMapper mapper;
+    private MCMapper mapper;
     @Autowired
     private Date date;
 
@@ -32,7 +33,6 @@ public class mcService {
      * @param param
      * @return
      */
-    @Transactional
     public List<MCDTO> getMachineList(Map<String, Object> param) {
       List<MCDTO> list = mapper.getMachineList(param);
       list.forEach(x -> x.setInstallDate(date.StringDateFormat(x.getInstallDate())));
@@ -45,7 +45,6 @@ public class mcService {
      * @param mcID
      * @return
      */
-    @Transactional
     public MCDTO getMachineDetail(String mcID) {
         MCDTO mcdto = mapper.getMachineDetail(mcID);
         mcdto.setInstallDate(date.StringDateFormat(mcdto.getInstallDate()));
@@ -58,7 +57,6 @@ public class mcService {
      * @param mcdto
      * @return
      */
-    @Transactional
     public MCDTO saveMachineDetail(MCDTO mcdto) {
         mcdto.setInstallDate(date.DBDateFormat(mcdto.getInstallDate()));
         return mapper.saveMachineDetail(mcdto);
@@ -70,7 +68,6 @@ public class mcService {
      * @param mcdto
      * @return
      */
-    @Transactional
     public MCDTO updateMachineDetail(MCDTO mcdto) {
         mcdto.setInstallDate(date.DBDateFormat(mcdto.getInstallDate()));
         return mapper.updateMachineDetail(mcdto);
@@ -81,7 +78,6 @@ public class mcService {
      *
      * @param mcID
      */
-    @Transactional
     public void deleteMachine(String mcID) {
         mapper.deleteMachine(mcID);
     }

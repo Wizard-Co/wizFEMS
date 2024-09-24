@@ -1,0 +1,78 @@
+<th:block th:fragment="navigation">
+    <div class="nav">
+        <img class="navbar-brand img" src="/img/wizard.png" width="60" height="50">
+        <ul class="navList">
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">기준정보</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="/basicMgmt/machine">설비관리</a></li>
+                        <li><a href="#">계측기관리</a></li>
+                        <li><a href="#">업체관리</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">에너지 모니터링</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">설비 현황</a></li>
+                        <li><a href="#">설비별 사용현황</a></li>
+                        <li><a href="#">설비별 요금발생 현황</a></li>
+                        <li><a href="#">압력/온도 추이</a></li>
+                        <li><a href="#">경보 알람</a></li>
+                        <li><a href="#">초기 데이터 현황</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">서비스 관리</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">사용실적 보고서</a></li>
+                        <li><a href="#">스마트KPI 전송설정</a></li>
+                        <li><a href="#">스마트KPI 전송내역</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">설비 관리</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">연간점검계획 관리</a></li>
+                        <li><a href="#">월간점검계획 관리</a></li>
+                        <li><a href="#">점검실적 등록</a></li>
+                        <li><a href="#">점검계획 대비 실적조회</a></li>
+                        <li><a href="#">설비별 가동조회</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">전력량 관리</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="#">Utility사용량 관리</a></li>
+                        <li><a href="#">월 생산량/매출 관리</a></li>
+                        <li><a href="#">에너지단가 추이</a></li>
+                        <li><a href="#">설비간 비교분석</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="navMenu">
+                    <h2 class="menu-title">시스템 관리</h2>
+                    <ul class="menu-dropdown">
+                        <li><a href="/systemMgmt/user">사용자 관리</a></li>
+                        <li><a href="#">권한 관리</a></li>
+                        <li><a href="#">메뉴 관리</a></li>
+                        <li><a href="#">운영그룹코드 관리</a></li>
+                        <li><a href="#">운영코드 관리</a></li>
+                        <li><a href="#">로그 관리</a></li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+        <div id="userInfo"></div>
+    </div>
+</th:block>

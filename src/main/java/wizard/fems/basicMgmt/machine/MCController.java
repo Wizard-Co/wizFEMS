@@ -6,22 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import wizard.fems.basicMgmt.machine.DTO.MCDTO;
 import wizard.fems.common.dto.CMCode;
-import wizard.fems.common.commonService;
-import wizard.fems.common.dto.User;
+import wizard.fems.common.CMService;
+import wizard.fems.systemMgmt.user.User;
 import wizard.fems.common.security.domain.LoginUser;
 
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class mcController {
+@RequestMapping("/basicMgmt/machine")
+public class MCController {
     @Autowired
-    private mcService mcService;
+    private MCService mcService;
     @Autowired
-    private commonService cmService;
+    private CMService cmService;
 
     @ModelAttribute
-    public void getCboMCType(Model model) {
+    public void setting(Model model) {
         List<CMCode> cboMcType = cmService.getCmCode("mcType");
         List<CMCode> cboUnit = cmService.getCmCode("mcUnit");
 
@@ -32,20 +33,20 @@ public class mcController {
         System.out.println(cboMcType);
     }
 
-    @GetMapping("/basicMgmt/machine")
-    public String mc(@LoginUser User user) {
+    @GetMapping("")
+    public String mc() {
 
         return "/pages/basicMgmt/machine/machine";
     }
 
-    @PostMapping(value = "/basicMgmt/machine/search")
+    @PostMapping(value = "/search")
     @ResponseBody
     public List<MCDTO> getMcData(@RequestBody Map<String, Object> param) {
         List<MCDTO> data = mcService.getMachineList(param);
         return data;
     }
 
-    @PostMapping("/basicMgmt/machine/detail")
+    @PostMapping("/detail")
     public String searchDetail(@RequestParam(name = "mcID", required = true) String mcID,
                                Model model) {
 
@@ -54,27 +55,27 @@ public class mcController {
         return "/pages/basicMgmt/machine/machineDetail";
     }
 
-    @PostMapping("/basicMgmt/machine/add")
+    @PostMapping("/add")
     public String add() {
-        return "/pages/basicMgmt/machineDetail";
+        return "/pages/basicMgmt/machine/machineDetail";
     }
 
-    @PostMapping("/basicMgmt/machine/save")
+    @PostMapping("/save")
     @ResponseBody
     public void save(@ModelAttribute MCDTO mcdto) {
         mcdto.setCreateUserID("sooJeong");
         mcService.saveMachineDetail(mcdto);
     }
 
-    @PostMapping("/basicMgmt/machine/update")
+    @PostMapping("/update")
     @ResponseBody
     public void update(@ModelAttribute MCDTO mcdto) {
 
-        mcdto.setUpdateUserID("soo");
+        mcdto.setLastUpdateUserID("soo");
         mcService.updateMachineDetail(mcdto);
     }
 
-    @GetMapping("/basicMgmt/machine/delete")
+    @GetMapping("/delete")
     @ResponseBody
     public void delete(@RequestParam(name = "mcID") String mcID) {
         mcService.deleteMachine(mcID);

@@ -118,7 +118,7 @@
                                    th:field="*{elecCapacity}"
                                    placeholder="설비용량(전기)를 입력하세요">
                             <label>단위 :</label>
-                            <select class="form-control w100px display-inline-block" th:field="*{elecCapacityUnit_ID}">
+                            <select class="form-control w100px display-inline-block" th:field="*{elecCapacityUnitClss}">
                                 <option th:each="option : ${cboUnit}"
                                         th:value="${option.codeID}" th:text="${option.codeName}">
                             </select>
@@ -133,15 +133,29 @@
                                    th:field="*{steamCapacity}"
                                    placeholder="설비용량(스팀)를 입력하세요">
                             <label>단위 :</label>
-                            <select class="form-control w100px display-inline-block" th:field="*{steamCapacityUnit_ID}">
+                            <select class="form-control w100px display-inline-block" th:field="*{steamCapacityUnitClss}">
                                 <option th:each="option : ${cboUnit}"
                                         th:value="${option.codeID}" th:text="${option.codeName}">
                             </select>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-2">
+                            <label>설치업체</label>
+                        </td>
+                        <td class="left">
+                            <input type="hidden" id="inputInstallCustomID" class="form-control display-inline-block m-r-1 inputPf"
+                                   th:field="*{installCustomID}" readonly>
+                            <input type="text" id="inputInstallCustom" class="form-control display-inline-block m-r-1 inputPf"
+                                   th:field="*{installCustom}"
+                                   placeholder="더블클릭을 해주세요"
+                                   readonly>
+                        <td colspan="2"></td>
+                    </tr>
                     </tbody>
                 </table>
             </form>
+            <span class="form-result float-start"></span>
         </div>
 
     </div>

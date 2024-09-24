@@ -3012,11 +3012,12 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-.btn:hover {
-  color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
-  border-color: var(--bs-btn-hover-border-color);
-}
+/*.btn:hover {*/
+/*  color: var(--bs-btn-hover-color);*/
+/*  background-color: var(--bs-btn-hover-bg);*/
+/*  border-color: var(--bs-btn-hover-border-color);*/
+/*}*/
+
 .btn-check + .btn:hover {
   color: var(--bs-btn-color);
   background-color: var(--bs-btn-bg);

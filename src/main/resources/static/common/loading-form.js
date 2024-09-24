@@ -9,9 +9,9 @@ export class loadingForm extends HTMLElement {
         }
     }
     render() {
-        this.innerHTML = `<button class="btn btn-primary" type="button" disabled>
-                                  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                  <span role="status">Loading...</span>
+        this.innerHTML = `<button class="btn-primary" type="button" disabled>
+                                  <span class="spinner-border" aria-hidden="true" style="margin-right: 0.2rem"></span>
+                                  <span role="status" style="font-size: x-large">Loading...</span>
                                 </button>`;
     }
     invisible() {
