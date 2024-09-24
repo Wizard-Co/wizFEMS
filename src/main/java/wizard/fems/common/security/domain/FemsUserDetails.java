@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import wizard.fems.common.dto.User;
+import wizard.fems.systemMgmt.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,7 +40,7 @@ public class FemsUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getId();
+        return user.getUserID();
     }
 
     @Override

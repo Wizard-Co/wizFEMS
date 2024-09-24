@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface mcMapper {
+public interface MCMapper {
     List<MCDTO> getMachineList(Map<String, Object> param);
     MCDTO getMachineDetail(String mcID);
     MCDTO saveMachineDetail(MCDTO mcdto);

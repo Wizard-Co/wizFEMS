@@ -13,9 +13,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}" lang="ko">
 
-<th:block layout:fragment="css">
-    <link rel="stylesheet" type="text/css" th:href="@{/systemMgmt/user/user.css}"/>
-</th:block>
 <th:block layout:fragment="script">
     <script th:src="@{/systemMgmt/user/user.js}"></script>
 </th:block>
@@ -23,7 +20,7 @@
 <section layout:fragment="content">
     <body>
     <loading-form id="loading" class="invisible"></loading-form>
-    <div id="contents">
+    <main>
         <div class="menu">
             <div class="page-header">
                 ■ 사용자 관리
@@ -36,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel">
+        <condition class="panel">
             <div class="panel-body">
                 <div class="flx">
                     <div class="div-srh m-r-4">
@@ -44,23 +41,19 @@
                         <select id="cboUserType" class="form-control w150px">
                             <option value="">전체</option>
                             <option th:each="option : ${cboUserType}"
-                                    th:value="${option.getAuthID()}" th:text="${option.getType()}">
+                                    th:value="${option.getAuthTypeID()}" th:text="${option.getAuthType()}">
                             </option>
                         </select>
                     </div>
                     <div class="div-srh m-r-4">
-                        <label for="inputMcNameSrh" class="lbl-srh">사용자 ID</label>
-                        <input type="text" id="inputMcNameSrh" class="form-control" placeholder="아이디">
-                    </div>
-                    <div class="div-srh m-r-4">
-                        <label for="inputMcNOSrh" class="lbl-srh">관리번호</label>
-                        <input type="text" id="inputMcNOSrh" class="form-control" placeholder="사용자명">
+                        <label for="inputNameSrh" class="lbl-srh">사용자 ID</label>
+                        <input type="text" id="inputNameSrh" class="form-control" placeholder="아이디">
                     </div>
 
                 </div>
             </div>
-        </div>
-        <div id="main">
+        </condition>
+        <section>
             <table id="userTable" class="striped cell-border table-light-info" style="width:100%">
                 <thead>
                 <tr>
@@ -73,8 +66,8 @@
                 </tr>
                 </thead>
             </table>
-        </div>
-    </div>
+        </section>
+    </main>
     </body>
 
 </section>

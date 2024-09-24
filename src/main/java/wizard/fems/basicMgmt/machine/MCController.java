@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import wizard.fems.basicMgmt.machine.DTO.MCDTO;
 import wizard.fems.common.dto.CMCode;
-import wizard.fems.common.commonService;
-import wizard.fems.common.dto.User;
+import wizard.fems.common.CMService;
+import wizard.fems.systemMgmt.user.User;
 import wizard.fems.common.security.domain.LoginUser;
 
 import java.util.List;
@@ -15,14 +15,14 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/basicMgmt/machine")
-public class mcController {
+public class MCController {
     @Autowired
-    private mcService mcService;
+    private MCService mcService;
     @Autowired
-    private commonService cmService;
+    private CMService cmService;
 
     @ModelAttribute
-    public void getCboMCType(Model model) {
+    public void setting(Model model) {
         List<CMCode> cboMcType = cmService.getCmCode("mcType");
         List<CMCode> cboUnit = cmService.getCmCode("mcUnit");
 
@@ -34,7 +34,7 @@ public class mcController {
     }
 
     @GetMapping("")
-    public String mc(@LoginUser User user) {
+    public String mc() {
 
         return "/pages/basicMgmt/machine/machine";
     }
@@ -57,7 +57,7 @@ public class mcController {
 
     @PostMapping("/add")
     public String add() {
-        return "/pages/basicMgmt/machineDetail";
+        return "/pages/basicMgmt/machine/machineDetail";
     }
 
     @PostMapping("/save")
@@ -71,7 +71,7 @@ public class mcController {
     @ResponseBody
     public void update(@ModelAttribute MCDTO mcdto) {
 
-        mcdto.setUpdateUserID("soo");
+        mcdto.setLastUpdateUserID("soo");
         mcService.updateMachineDetail(mcdto);
     }
 

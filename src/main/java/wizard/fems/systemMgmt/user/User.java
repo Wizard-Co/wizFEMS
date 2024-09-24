@@ -1,6 +1,10 @@
-package wizard.fems.common.dto;
+package wizard.fems.systemMgmt.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * packageName      : wizard.fems.common.security.DTO
@@ -15,7 +19,8 @@ import lombok.Data;
 
 @Data
 public class User {
-    public String id;
+    public String userID;
+    public String personID;
     public String name;
     public String password;
     public String departID;
@@ -28,7 +33,12 @@ public class User {
     public String useYN;
     public String createUserID;
     public String createDate;
-    public String updateUserID;
-    public String updateDate;
+    public String lastUpdateUserID;
+    public String lastUpdateDate;
+    public String cellPhoneNumber;
+    public String comments;
 
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
 }

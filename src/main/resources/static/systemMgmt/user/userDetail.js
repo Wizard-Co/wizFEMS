@@ -7,7 +7,7 @@ document.getElementById('btnSave').addEventListener('click', function () {
     if (form.checkValidity()) {
         const payload = new FormData(form);
 
-        fetch('/basicMgmt/machine/save', {
+        fetch('/systemMgmt/user/save', {
             method: 'post',
             body: payload,
             headers: {},
@@ -24,13 +24,13 @@ document.getElementById('btnSave').addEventListener('click', function () {
 })
 
 document.getElementById('btnDelete').addEventListener('click', function () {
-    let mcID = document.getElementById('mcID').value;
+    let userID = document.getElementById('userID').value;
 
-    if (!!mcID) {
+    if (!!userID) {
 
-        let baseUrl = '/basicMgmt/machine/delete';
+        let baseUrl = '/systemMgmt/user/delete';
         let param = new URLSearchParams({
-            mcID: mcID
+            userID: userID
         });
         let urlWithParam = `${baseUrl}?${param}`
 
@@ -52,7 +52,7 @@ document.getElementById('btnUpdate').addEventListener('click', function () {
         const payload = new FormData(form);
         const result = document.querySelector('.form-result');
 
-        fetch('/basicMgmt/machine/update', {
+        fetch('/systemMgmt/user/update', {
             method: 'post',
             body: payload,
             headers: {},
@@ -61,7 +61,6 @@ document.getElementById('btnUpdate').addEventListener('click', function () {
                 if (!res.ok) throw new Error(res.status);
             })
             .then(() => {
-                // window.open('', '_self').close();
                 result.innerHTML = '저장이 완료되었습니다';
                 refreshForm();
                 opener.Search();
@@ -77,6 +76,3 @@ document.getElementById('btnClose').addEventListener('click', function () {
     window.open('', '_self').close();
 })
 
-document.getElementById('inputInstallCustom').addEventListener('dblclick', function () {
-    PlusFinder('inputInstallCustomID', 'inputInstallCustom', 1, '');
-})

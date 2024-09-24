@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wizard.fems.systemMgmt.user.UserMapper">
+
+    <select id="getUserList" statementType="CALLABLE" resultType="wizard.fems.systemMgmt.user.User"
+            parameterType="map">
+        { call getUserList(#{authTypeID, javaType=String, jdbcType=VARCHAR, mode=IN}
+                        , #{userID, javaType=String, jdbcType=VARCHAR, mode=IN}
+               )}
+    </select>
+
+    <select id="getUserDetail" resultType="wizard.fems.systemMgmt.user.User" parameterType="String">
+        select userID
+             , name
+             , password
+             , authTypeID
+             , authType = 'ADMIN'
+        from mt_user
+        where userID = #{userID}
+    </select>
+
+
+</mapper>

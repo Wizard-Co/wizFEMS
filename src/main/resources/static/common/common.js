@@ -123,4 +123,30 @@ function validate() {
     })
 }
 
+//#region 플러스파인더
+function PlusFinder(txtID,txtName, nLarge, sMiddle) {
 
+    let baseurl = "/pages/common/plusFinder";
+    let url = baseurl + "?txtID=" + txtID + "&txtName=" + txtName + "&nLarge=" + nLarge + "&sMiddle=" + sMiddle;
+    let encodeUrl = encodeURI(url);
+    let name = "plusfinder";
+
+    let _width = 400;
+    let _height = 600;
+    let _left = Math.ceil((window.screen.width - _width) / 2);
+    let _top = Math.ceil((window.screen.height - _height) / 2);
+    let option = "width=" + _width + ", height=" + _height + ", top=" + _top + ", left=" + _left;
+    let openPf = window.open(encodeUrl, name, option);
+
+}
+
+function setPlusFinderData(txtID, txtName, PfID, PfName){
+    document.getElementById(txtID).value = PfID;
+    document.getElementById(txtName).value = PfName;
+}
+
+function refreshForm(){
+    form.classList.remove('was-validated');
+}
+
+//#endregion

@@ -20,7 +20,7 @@ public enum Role {
     USER("01","사용자"),
     ADMIN("02","관리자");
 
-    private String authID;
-    private String type;
+    private String authTypeID;
+    private String authType;
 
 }

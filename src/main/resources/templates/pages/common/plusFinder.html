@@ -5,28 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>플러스파인더 </title>
-    <!-- 부트스트랩 cdn-->
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- 부트스트랩 cdn  -->
+    <th:block th:replace="~{layout/config :: configFragment}"></th:block>
+    <link rel="stylesheet" href="/common/table.css">
+    <link rel="stylesheet" href="/common/common.css">
 
     <style>
         html,
         body {
-            height: 300px;
-            width: 600px;
-            margin: 10px;
+            font-size: 14px;
+        }
+        #main {
+            padding: 1rem;
         }
 
-        .plusFinderTop {
+        .PFTop {
             display: flex;
-            flex-direction: row;
-            gap: 20px;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
-        .lblTitle {
-            font-weight: bolder;
+        .PFpaging {
+            display: flex;
+            justify-content: center;
+            margin: 0.5rem;
         }
 
         a:link {
@@ -53,98 +54,58 @@
 </head>
 
 <body>
-<div class="plusFinderTop">
-    <div class="searchForm">
-        <div class="row g-3 align-items-center">
-            <div class="col-auto">
-                <label for="inputCode" class="col-form-label">
-                    <p class="lblTitle">코드</p>
-                </label>
-            </div>
-            <div class="col-auto">
-                <input type="hidden" id="inputIDform">
-                <input type="text" id="inputCode" class="form-control">
-            </div>
-        </div>
-
-        <div class="row g-3 align-items-center">
-            <div class="col-auto">
-                <label for="inputName" class="col-form-label">
-                    <p class="lblTitle">명칭</p>
-                </label>
-            </div>
-            <div class="col-auto">
-                <input type="hidden" id="inputNameform">
-                <input type="text" id="inputName" class="form-control">
-            </div>
-        </div>
-    </div>
-
-    <div class="btnPf">
-        <button type="button" class="btn btn-outline-primary" id="btnSearch">검색</button>
-        <button type="button" class="btn btn-outline-primary" id="btnCheck">선택</button>
-        <button type="button" class="btn btn-outline-primary" id="btnCancle">취소</button>
-    </div>
-</div>
-
-<div class="plusFinderBottom">
-    <div class="tbpf">
-        <table class="table table-striped table-hover">
+<div id="main">
+    <div class="plusFinderBottom">
+        <table id="PFtable" class="striped cell-border table-light-info">
+            <thead>
             <tr>
                 <th th:each="colName : ${lstColName}" th:text="${colName}"></th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="rowData : ${lstpf}">
-                <th:block th:each="row : ${rowData}">
-                    <td><a href="#" th:text="${row.value}" th:value="${rowData['코드']}"
-                           th:onclick="sendParent([[${rowData['코드']}]],[[${row.value}]])"></a>
-                    </td>
-                </th:block>
+                <td class="center" th:each="row, i : ${rowData}">
+                    <span th:if="${i.index == 0}" th:text="${row.value}"></span>
+                    <a th:if="${i.index > 0}" href="#" th:text="${row.value}" th:value="${rowData['코드']}"
+                       th:onclick="sendParent([[${rowData['코드']}]],[[${row.value}]])"></a>
+                </td>
             </tr>
+            </tbody>
         </table>
-    </div>
 
+
+    </div>
 </div>
 
 <!-- 스크립트 -->
 <script th:inline="javascript">
+    DataTable.type('num', 'className', '');
 
-    function Search() {
-        let param = window.location.search;
-        let param_url = new URLSearchParams(param);
-        let sMiddle = document.querySelector("#inputName").value;
-        let newUrl = window.location.pathname + '?' + param_url.toString();
-        window.location.href = newUrl;
+    const url = window.location.search;
+    const urlParam = new URLSearchParams(url);
+    const txtID = urlParam.get('txtID');
+    const txtName = urlParam.get('txtName');
 
-        console.log(newUrl);
-    }
+    const PFtable = $('#PFtable').removeAttr('width').DataTable({
+        dom: '<"PFTop"f>t<"PFpaging"p>',
+        select: true,
+        language: {
+            zeroRecords: "검색된 항목이 없습니다.",
+            search: "통합 검색:"
+        },
+        lengthChange: false,
+        searching: true,
+        ordering: false,
+        info: false,
+        paging: true,
+        scrollX: false,
+        scrollY: true,
+    });
 
-    document.querySelector("#btnSearch").addEventListener("click", Search);
-
-    function sendParent(id, name) {
-        let inputNameform = document.querySelector("#inputNameform").value;
-        let inputIDform = document.querySelector("#inputIDform").value;
-
-        console.log('inputNameform= ' + inputNameform);
-        console.log('inputNameform= ' + inputNameform);
-        console.log('id= ' + id);
-        console.log('name= ' + name);
-
-        opener.document.querySelector("#" + inputNameform).value = name;
-        opener.document.querySelector("#" + inputNameform).setAttribute("data-id", id);
-        opener.document.querySelector("#" + inputNameform).setAttribute("data-name", name);
-
-        // if(inputIDform != ''){
-        //     opener.document.querySelector("#" + inputIDform).value = id;
-        //     opener.document.querySelector("#" + inputIDform).setAttribute("data-id", id);
-        //     opener.document.querySelector("#" + inputIDform).setAttribute("data-name", name);
-        // }
-
+    function sendParent(PfID, PfName) {
+        opener.setPlusFinderData(txtID, txtName, PfID, PfName);
         this.close();
-
     }
-
-
-
 </script>
 
 

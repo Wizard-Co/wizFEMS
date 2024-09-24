@@ -37,7 +37,7 @@ tbody.ondblclick = function (event) {
 }
 
 function mainBtnSetting() {
-    document.querySelector("#btnSearch").addEventListener("click", Search);
+    document.getElementById('btnSearch').addEventListener("click", Search);
 }
 
 document.getElementById('btnAdd').addEventListener('click', function () {
