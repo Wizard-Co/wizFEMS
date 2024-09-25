@@ -50,7 +50,7 @@
                                  #{steamCapacity, javaType=float, jdbcType=FLOAT, mode=IN},
                                  #{steamCapacityUnitClss, javaType=String, jdbcType=VARCHAR, mode=IN},
                                  #{installCustomID, javaType=String, jdbcType=CHAR, mode=IN},
-                                #{lastUpdateUserID, javaType=String, jdbcType=VARCHAR, mode=IN}
+                                 #{lastUpdateUserID, javaType=String, jdbcType=VARCHAR, mode=IN}
 
                )}
     </select>

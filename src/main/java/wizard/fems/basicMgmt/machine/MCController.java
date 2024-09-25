@@ -1,6 +1,9 @@
 package wizard.fems.basicMgmt.machine;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +13,7 @@ import wizard.fems.common.dto.CMCode;
 import wizard.fems.common.security.domain.LoginUser;
 import wizard.fems.systemMgmt.user.User;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -80,5 +84,10 @@ public class MCController {
     public void delete(@RequestParam(name = "mcID") String mcID) {
 
         mcService.deleteMachine(mcID);
+    }
+
+    @ExceptionHandler(SQLException.class)
+    public ResponseEntity<String> exceptionHandler(SQLException e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SQL 오류");
     }
 }

@@ -36,7 +36,9 @@ document.getElementById('btnDelete').addEventListener('click', function () {
 
         fetch(urlWithParam)
             .then(res => {
-                if (!res.ok) console.log('http error: ', res)
+                if (!res.ok) {
+                    return res.text().then(err => {throw new Error(err)});
+                }
             })
             .then(() => {
                 window.open('', '_self').close();
@@ -58,7 +60,9 @@ document.getElementById('btnUpdate').addEventListener('click', function () {
             headers: {},
         })
             .then(res => {
-                if (!res.ok) throw new Error(res.status);
+                if (!res.ok) {
+                    return res.text().then(err => {throw new Error(err)});
+                }
             })
             .then(() => {
                 // window.open('', '_self').close();
