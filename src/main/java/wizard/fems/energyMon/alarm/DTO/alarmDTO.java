@@ -1,4 +1,4 @@
-package wizard.fems.enMonit.alarm.DTO;
+package wizard.fems.energyMon.alarm.DTO;
 
 import lombok.Data;
 

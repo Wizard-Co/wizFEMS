@@ -1,0 +1,12 @@
+.space{
+    width: 5%;
+}
+
+.print-border, .print-border tr, .print-border td {
+    border: 1px solid #B2B2B2 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+
+}

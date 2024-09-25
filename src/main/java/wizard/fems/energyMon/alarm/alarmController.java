@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import wizard.fems.common.CMService;
-import wizard.fems.enMonit.alarm.DTO.alarmDTO;
+import wizard.fems.energyMon.alarm.DTO.alarmDTO;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,13 +35,13 @@ public class alarmController {
     }
 
 
-    @GetMapping("/enMonit/alarm")
+    @GetMapping("/energyMon/alarm")
     public String alarm() {
 
-        return "/pages/enMonit/alarm/alarm";
+        return "/pages/energyMon/alarm/alarm";
     }
 
-    @PostMapping(value = "/enMonit/alarm/search")
+    @PostMapping(value = "/energyMon/alarm/search")
     @ResponseBody
     public List<alarmDTO> getAlarmList(@RequestBody Map<String, Object> param) {
         List<alarmDTO> data = alarmservice.getAlarmList(param);

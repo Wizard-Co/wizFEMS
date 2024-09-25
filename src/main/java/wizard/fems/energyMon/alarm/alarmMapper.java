@@ -1,7 +1,7 @@
 package wizard.fems.energyMon.alarm;
 
 import org.apache.ibatis.annotations.Mapper;
-import wizard.fems.enMonit.alarm.DTO.alarmDTO;
+import wizard.fems.energyMon.alarm.DTO.alarmDTO;
 
 import java.util.HashMap;
 import java.util.List;

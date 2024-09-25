@@ -2,7 +2,7 @@ package wizard.fems.energyMon.alarm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wizard.fems.enMonit.alarm.DTO.alarmDTO;
+import wizard.fems.energyMon.alarm.DTO.alarmDTO;
 
 import java.util.HashMap;
 import java.util.List;
