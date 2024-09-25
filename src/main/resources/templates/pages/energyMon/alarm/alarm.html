@@ -1,0 +1,100 @@
+<!--
+패키지명 : templates\pages\energyMon\alarm.html
+파일명: alarm.html
+작성일: 2024-09-24
+개발자: daehyun
+***************************************************
+변경일자            변경자             변경내용
+***************************************************
+2024-09-24        최대현             최초작성
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}" lang="ko">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{/energyMon/alarm/alarm.css}"/>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:src="@{/energyMon/alarm/alarm.js}"></script>
+</th:block>
+<!--content-->
+<section layout:fragment="content">
+    <body>
+    <loading-form id="loading" class="invisible"></loading-form>
+    <div id="contents">
+        <div class="menu">
+            <div class="page-header">
+                ■ 경보 알람
+            </div>
+            <div class="icon">
+                <div class="flx">
+                    <button type="button" class="btn btn-info m-r-05" id="btnSearch">조회</button>
+                    <button type="button" id="btnExcel" class="btn btn-print m-r-05">엑셀</button>
+                    <button type="button" id="btnPrint" class="btn btn-print" >인쇄</button>
+                    <!--                    <button type="button" class="btn btn-success m-r-05" id="btnAdd">등록</button>-->
+                    <!--                    <button type="button" class="btn btn-success" id="btnDelete">삭제</button>-->
+                </div>
+                <div class="flx mt-05">
+                    <!--                    <button type="button" id="btnExcel" class="btn btn-print m-r-05">엑셀</button>-->
+                    <!--                    <button type="button" id="btnPrint" class="btn btn-print" >인쇄</button>-->
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body">
+                <div class="flx">
+                    <div class="div-srh m-r-4" hidden>
+                        <label class="lbl-srh">업체명</label>
+                        <select class="form-control w200px display-inline-block ct" name="customID">
+                            <option th:each="option : ${cboCustom}"
+                                    th:value="${option.customID}" th:text="${option.kCustom}">
+                        </select>
+                    </div>
+                    <!--                    <div class="space"></div>-->
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">설비</label>
+                        <select class="form-control w200px display-inline-block ct" id="mcID" name="mcID">
+                            <option th:each="option : ${cboMachine}"
+                                    th:value="${option.mcID}" th:text="${option.mcName}">
+                        </select>
+                    </div>
+                    <div class="space"></div>
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">기간</label>
+                        <input type="date" id="sDate">
+                        <span>&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                        <input type="date" id="eDate">
+                    </div>
+                    <div class="space"></div>
+                    <div class="div-srh m-r-4">
+                        <label class="lbl-srh">알람종류</label>
+                        <select class="form-control w200px display-inline-block ct" id="alarmLevel"  name="codeID">
+                            <option th:each="option : ${cboAlarmType}"
+                                    th:value="${option.codeID}" th:text="${option.codeName}">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <table id="alarmTable" class="striped cell-border table-light-info" style="width:100%">
+                <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>발생일</th>
+                    <th>발생시각</th>
+                    <th>알람종류</th>
+                    <th>유형</th>
+                    <th>설비</th>
+                    <th>비고</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    </body>
+
+</section>
+</html>
+
