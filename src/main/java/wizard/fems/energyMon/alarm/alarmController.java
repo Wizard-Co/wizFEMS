@@ -1,4 +1,4 @@
-package wizard.fems.enMonit.alarm;
+package wizard.fems.energyMon.alarm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
